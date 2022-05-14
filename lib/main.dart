@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_full/basic/app_bar_learn.dart';
 import 'package:flutter_full/basic/container_sized_box_learn.dart';
 import 'package:flutter_full/basic/icon_learn.dart';
+import 'package:flutter_full/basic/padding_learn.dart';
 import 'package:flutter_full/basic/scaffold_learn.dart';
+import 'package:flutter_full/basic/stateless_learn.dart';
 import 'package:flutter_full/basic/text_view_learn.dart';
 
 import 'basic/button_learn.dart';
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle
                 .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
           )),
-      home: const ColorLearn(),
+      home: const PaddingLearn(),
     );
   }
 }
