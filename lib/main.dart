@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_full/basic/app_bar_learn.dart';
+import 'package:flutter_full/basic/card_learn.dart';
 import 'package:flutter_full/basic/container_sized_box_learn.dart';
 import 'package:flutter_full/basic/icon_learn.dart';
+import 'package:flutter_full/basic/image_learn.dart';
 import 'package:flutter_full/basic/padding_learn.dart';
 import 'package:flutter_full/basic/scaffold_learn.dart';
 import 'package:flutter_full/basic/stateless_learn.dart';
@@ -25,6 +27,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
+          cardTheme: CardTheme(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20))),
           errorColor: ColorItems.sulu,
           appBarTheme: const AppBarTheme(
             centerTitle: true,
@@ -34,7 +39,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle
                 .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
           )),
-      home: const PaddingLearn(),
+      home: const ImageLearn(),
     );
   }
 }
