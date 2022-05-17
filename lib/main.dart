@@ -9,6 +9,7 @@ import 'package:flutter_full/basic/padding_learn.dart';
 import 'package:flutter_full/basic/scaffold_learn.dart';
 import 'package:flutter_full/basic/stateless_learn.dart';
 import 'package:flutter_full/basic/text_view_learn.dart';
+import 'package:flutter_full/demos/note_demos.dart';
 
 import 'basic/button_learn.dart';
 import 'basic/color_learn.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle
                 .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
           )),
-      home: const ImageLearn(),
+      home: const NoteDemo(),
     );
   }
 }
