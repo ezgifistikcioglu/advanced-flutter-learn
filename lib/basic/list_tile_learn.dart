@@ -31,7 +31,7 @@ class ListTileLearn extends StatelessWidget {
               subtitle: Text(_subTitleText),
               leading: const Icon(Icons.money),
               trailing:
-                  SizedBox(child: const Icon(Icons.chevron_right_outlined)),
+                  const SizedBox(child: Icon(Icons.chevron_right_outlined)),
             ),
           ),
         ),

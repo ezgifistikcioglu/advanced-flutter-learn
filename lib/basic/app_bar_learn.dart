@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class AppBarLearnView extends StatelessWidget {
   const AppBarLearnView({Key? key}) : super(key: key);
@@ -23,7 +22,7 @@ class AppBarLearnView extends StatelessWidget {
           )
         ],
       ),
-      body: Column(children: []),
+      body: Column(children: const []),
     );
   }
 }
