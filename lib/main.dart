@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_full/basic/page_view_learn.dart';
-import 'package:flutter_full/basic/stateful_learn.dart';
+import 'package:flutter_full/basic/stateful_lifecycle_learn.dart';
+import 'package:flutter_full/basic/text_field_learn.dart';
 
 import 'basic/color_learn.dart';
 
@@ -23,6 +23,12 @@ class MyApp extends StatelessWidget {
               const ListTileThemeData(contentPadding: EdgeInsets.zero),
           progressIndicatorTheme:
               const ProgressIndicatorThemeData(color: Colors.purple),
+          textTheme: const TextTheme(subtitle1: TextStyle(color: Colors.white)),
+          inputDecorationTheme: const InputDecorationTheme(
+              filled: true,
+              fillColor: Colors.transparent,
+              iconColor: Colors.purple,
+              border: OutlineInputBorder()),
           cardTheme: CardTheme(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20))),
@@ -35,7 +41,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle
                 .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
           )),
-      home: const PageViewLearn(),
+      home: const TextFieldLearn(),
     );
   }
 }
