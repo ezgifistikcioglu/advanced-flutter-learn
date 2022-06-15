@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_full/basic/stateful_lifecycle_learn.dart';
 import 'package:flutter_full/basic/text_field_learn.dart';
+import 'package:flutter_full/demos/color_demos_view.dart';
 
 import 'basic/color_learn.dart';
 
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle
                 .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
           )),
-      home: const TextFieldLearn(),
+      home: const ColorDemos(),
     );
   }
 }
