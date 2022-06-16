@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_full/basic/list_view_builder.dart';
-import 'package:flutter_full/demos/my_collections.dart';
+import 'package:flutter_full/basic/navigation_learn.dart';
 
 import 'basic/color_learn.dart';
 
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle
                 .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
           )),
-      home: const MyColloectionsDemo(),
+      home: const NavigationLearn(),
     );
   }
 }
