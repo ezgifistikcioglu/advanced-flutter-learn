@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_full/basic/navigation_learn.dart';
+import 'package:flutter_full/mid/tab_learn.dart';
 
 import 'basic/color_learn.dart';
 
@@ -18,6 +19,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
+          bottomAppBarTheme:
+              const BottomAppBarTheme(shape: CircularNotchedRectangle()),
+          tabBarTheme: const TabBarTheme(
+              labelColor: Colors.amber,
+              unselectedLabelColor: Colors.white,
+              indicatorSize: TabBarIndicatorSize.label),
           listTileTheme:
               const ListTileThemeData(contentPadding: EdgeInsets.zero),
           progressIndicatorTheme:
@@ -40,7 +47,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle
                 .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
           )),
-      home: const NavigationLearn(),
+      home: const TabLearn(),
     );
   }
 }
