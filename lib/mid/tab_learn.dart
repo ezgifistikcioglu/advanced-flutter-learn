@@ -14,7 +14,7 @@ class TabLearn extends StatefulWidget {
 
 class _TabLearnState extends State<TabLearn> with TickerProviderStateMixin {
   late final TabController _tabController;
-
+  final double _notchedValue = 10;
   @override
   void initState() {
     super.initState();
@@ -30,22 +30,12 @@ class _TabLearnState extends State<TabLearn> with TickerProviderStateMixin {
         extendBody: true,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(onPressed: () {
-          _tabController.animateTo(1);
+          _tabController.animateTo(_MyTabViews.home.index);
         }),
         bottomNavigationBar: BottomAppBar(
-          notchMargin: 10,
+          notchMargin: _notchedValue,
           //shape: const CircularNotchedRectangle(),
-          child: TabBar(
-              indicatorColor: Colors.white,
-              //labelColor: Colors.amber,
-              //unselectedLabelColor: Colors.white,
-              padding: EdgeInsets.zero,
-              onTap: (int index) {},
-              //isScrollable: true,
-              controller: _tabController,
-              tabs: _MyTabViews.values
-                  .map((e) => Tab(text: '${e.name}'))
-                  .toList()),
+          child: _myTabView(),
           // [
           //Tab(child: Text('Page1')),
           // Tab(child: Text('Page2')),
@@ -54,17 +44,33 @@ class _TabLearnState extends State<TabLearn> with TickerProviderStateMixin {
         appBar: AppBar(
             //bottom: const TabBar(  tabs: [Tab(child: Text('Page1')),Tab(child: Text('Page2'))],),
             ),
-        body: TabBarView(
-            physics: const NeverScrollableScrollPhysics(),
-            controller: _tabController,
-            children: const [
-              CardLearn(),
-              PageViewLearn(),
-              ImageLearn(),
-              ListViewLearn()
-            ]),
+        body: _tabBarView(),
       ),
     );
+  }
+
+  TabBar _myTabView() {
+    return TabBar(
+        indicatorColor: Colors.white,
+        //labelColor: Colors.amber,
+        //unselectedLabelColor: Colors.white,
+        padding: EdgeInsets.zero,
+        onTap: (int index) {},
+        //isScrollable: true,
+        controller: _tabController,
+        tabs: _MyTabViews.values.map((e) => Tab(text: '${e.name}')).toList());
+  }
+
+  TabBarView _tabBarView() {
+    return TabBarView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: _tabController,
+        children: const [
+          CardLearn(),
+          PageViewLearn(),
+          ImageLearn(),
+          ListViewLearn()
+        ]);
   }
 }
 
