@@ -15,10 +15,13 @@ class _ServiceLearnState extends State<ServiceLearn> {
   List<PostModel>? _items;
   String? name;
   bool _isLoading = false;
+  late final Dio _networkManagerDio;
+  final String _baseUrl = 'https://jsonplaceholder.typicode.com/posts';
 
   @override
   void initState() {
     super.initState();
+    _networkManagerDio = Dio(BaseOptions(baseUrl: _baseUrl));
     name = "unKnown";
     fetchPostItems();
   }
@@ -33,6 +36,21 @@ class _ServiceLearnState extends State<ServiceLearn> {
     changeLoading();
     final response =
         await Dio().get('https://jsonplaceholder.typicode.com/posts');
+    if (response.statusCode == HttpStatus.ok) {
+      final _myDatas = response.data;
+
+      if (_myDatas is List) {
+        setState(() {
+          _items = _myDatas.map((e) => PostModel.fromJson(e)).toList();
+        });
+      }
+    }
+    changeLoading();
+  }
+
+  Future<void> fetchPostItemsAdvance() async {
+    changeLoading();
+    final response = await _networkManagerDio.get('posts');
     if (response.statusCode == HttpStatus.ok) {
       final _myDatas = response.data;
 
