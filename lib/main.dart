@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_full/mid/model_learn_view.dart';
-import 'package:flutter_full/mid/service/service_learn_view.dart';
-import 'package:flutter_full/mid/service/service_post_learn_view.dart';
+import 'package:flutter_full/mid/service/comments_learn_view.dart';
+import 'package:flutter_full/mid/service/service_learn_get_view.dart';
 
 import 'basic/color_learn.dart';
 
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle
                 .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
           )),
-      home: const ServicePostLearn(),
+      home: const ServiceLearn(),
     );
   }
 }

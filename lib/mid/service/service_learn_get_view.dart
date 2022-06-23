@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_full/mid/service/comments_learn_view.dart';
 import 'package:flutter_full/mid/service/post_model.dart';
+import 'package:flutter_full/mid/service/post_service.dart';
 
 class ServiceLearn extends StatefulWidget {
   const ServiceLearn({Key? key}) : super(key: key);
@@ -16,14 +18,18 @@ class _ServiceLearnState extends State<ServiceLearn> {
   String? name;
   bool _isLoading = false;
   late final Dio _networkManagerDio;
-  final String _baseUrl = 'https://jsonplaceholder.typicode.com/posts';
+  final String _baseUrl = 'https://jsonplaceholder.typicode.com';
+
+  //TEST EDİLEBİLİR KOD BAŞLADI
+  late final IPostService _postService;
 
   @override
   void initState() {
     super.initState();
     _networkManagerDio = Dio(BaseOptions(baseUrl: _baseUrl));
+    _postService = PostService();
     name = "unKnown";
-    fetchPostItems();
+    fetchPostItemsAdvance();
   }
 
   void changeLoading() {
@@ -50,16 +56,7 @@ class _ServiceLearnState extends State<ServiceLearn> {
 
   Future<void> fetchPostItemsAdvance() async {
     changeLoading();
-    final response = await _networkManagerDio.get('posts');
-    if (response.statusCode == HttpStatus.ok) {
-      final _myDatas = response.data;
-
-      if (_myDatas is List) {
-        setState(() {
-          _items = _myDatas.map((e) => PostModel.fromJson(e)).toList();
-        });
-      }
-    }
+    _items = await _postService.fetchPostItemsAdvance();
     changeLoading();
   }
 
@@ -74,13 +71,15 @@ class _ServiceLearnState extends State<ServiceLearn> {
               : const SizedBox.shrink()
         ],
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        itemCount: _items?.length ?? 0,
-        itemBuilder: (context, index) {
-          return _PostCard(model: _items?[index]);
-        },
-      ),
+      body: _items == null
+          ? const Placeholder()
+          : ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              itemCount: _items?.length ?? 0,
+              itemBuilder: (context, index) {
+                return _PostCard(model: _items?[index]);
+              },
+            ),
     );
   }
 }
@@ -99,6 +98,11 @@ class _PostCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.only(bottom: 20),
       child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => CommentsLearnView(postId: _model?.id),
+          ));
+        },
         title: Text(_model?.title ?? ''),
         subtitle: Text(_model?.body ?? ''),
       ),
