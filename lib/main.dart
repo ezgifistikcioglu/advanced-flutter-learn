@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_full/mid/model_learn_view.dart';
-import 'package:flutter_full/mid/service/comments_learn_view.dart';
 import 'package:flutter_full/mid/service/service_learn_get_view.dart';
 
 import 'basic/color_learn.dart';

@@ -25,7 +25,7 @@ class _PageViewLearnState extends State<PageViewLearn> {
         //mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 30),
+            padding: const EdgeInsets.only(left: 30),
             child: Text(_currentPageIndex.toString()),
           ),
           const Spacer(),

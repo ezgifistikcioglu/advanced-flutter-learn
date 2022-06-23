@@ -20,14 +20,14 @@ class _StatefullLifeCycleLearnState extends State<StatefullLifeCycleLearn> {
     _message = widget.message;
     _isOdd = widget.message.length.isOdd;
     _isOddOrEven();
-    print('a');
+    //print('a');
   }
 
   @override
   void didChangeDependencies() {
     // Genelde kendi widget'ı içinde kullanılır.
     super.didChangeDependencies();
-    print('b');
+    //print('b');
   }
 
   @override
@@ -38,7 +38,7 @@ class _StatefullLifeCycleLearnState extends State<StatefullLifeCycleLearn> {
       _message = widget.message;
       _isOddOrEven();
       setState(() {
-        print("c");
+        //  print("c");
       });
     }
   }

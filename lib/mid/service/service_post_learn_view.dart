@@ -100,8 +100,8 @@ class _ServicePostLearnState extends State<ServicePostLearn> {
       MediaQuery.of(context).size.height * .02;
 }
 
-class _PostCard extends StatelessWidget {
-  const _PostCard({
+class PostCard extends StatelessWidget {
+  const PostCard({
     Key? key,
     required PostModel? model,
   })  : _model = model,

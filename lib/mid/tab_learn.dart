@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full/basic/app_bar_learn.dart';
 import 'package:flutter_full/basic/card_learn.dart';
 import 'package:flutter_full/basic/image_learn.dart';
 import 'package:flutter_full/basic/list_view_learn.dart';
@@ -58,7 +57,7 @@ class _TabLearnState extends State<TabLearn> with TickerProviderStateMixin {
         onTap: (int index) {},
         //isScrollable: true,
         controller: _tabController,
-        tabs: _MyTabViews.values.map((e) => Tab(text: '${e.name}')).toList());
+        tabs: _MyTabViews.values.map((e) => Tab(text: e.name)).toList());
   }
 
   TabBarView _tabBarView() {

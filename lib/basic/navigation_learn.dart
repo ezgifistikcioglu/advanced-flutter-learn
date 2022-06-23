@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full/basic/image_learn.dart';
 import 'package:flutter_full/basic/navigate_detail_learn.dart';
 
 class NavigationLearn extends StatefulWidget {
