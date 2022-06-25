@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_full/mid/service/package_learn_view.dart';
-
-import 'basic/color_learn.dart';
+import 'package:flutter_full/mid/package_learn_view.dart';
+import 'package:flutter_full/mid/theme/light_theme.dart';
+import 'package:flutter_full/mid/theme_learn_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,36 +16,37 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-          bottomAppBarTheme:
-              const BottomAppBarTheme(shape: CircularNotchedRectangle()),
-          tabBarTheme: const TabBarTheme(
-              labelColor: Colors.amber,
-              unselectedLabelColor: Colors.white,
-              indicatorSize: TabBarIndicatorSize.label),
-          listTileTheme:
-              const ListTileThemeData(contentPadding: EdgeInsets.zero),
-          progressIndicatorTheme:
-              const ProgressIndicatorThemeData(color: Colors.purple),
-          textTheme: const TextTheme(subtitle1: TextStyle(color: Colors.white)),
-          inputDecorationTheme: const InputDecorationTheme(
-              filled: true,
-              fillColor: Colors.transparent,
-              iconColor: Colors.purple,
-              border: OutlineInputBorder()),
-          cardTheme: CardTheme(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20))),
-          errorColor: ColorItems.sulu,
-          appBarTheme: const AppBarTheme(
-            centerTitle: true,
-            backgroundColor:
-                Colors.transparent, //transparan olması için elevation 0 şart
-            elevation: 0,
-            systemOverlayStyle: SystemUiOverlayStyle
-                .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
-          )),
-      home: const PackageLearnView(),
+      theme: LightTheme().theme,
+      //ThemeData.dark().copyWith(
+      //    bottomAppBarTheme:
+      //        const BottomAppBarTheme(shape: CircularNotchedRectangle()),
+      //    tabBarTheme: const TabBarTheme(
+      //        labelColor: Colors.amber,
+      //        unselectedLabelColor: Colors.white,
+      //        indicatorSize: TabBarIndicatorSize.label),
+      //    listTileTheme:
+      //        const ListTileThemeData(contentPadding: EdgeInsets.zero),
+      //    progressIndicatorTheme:
+      //        const ProgressIndicatorThemeData(color: Colors.purple),
+      //    textTheme: const TextTheme(subtitle1: TextStyle(color: Colors.white)),
+      //    inputDecorationTheme: const InputDecorationTheme(
+      //        filled: true,
+      //        fillColor: Colors.transparent,
+      //        iconColor: Colors.purple,
+      //        border: OutlineInputBorder()),
+      //    cardTheme: CardTheme(
+      //        shape: RoundedRectangleBorder(
+      //            borderRadius: BorderRadius.circular(20))),
+      //    errorColor: ColorItems.sulu,
+      //    appBarTheme: const AppBarTheme(
+      //      centerTitle: true,
+      //      backgroundColor:
+      //          Colors.transparent, //transparan olması için elevation 0 şart
+      //      elevation: 0,
+      //      systemOverlayStyle: SystemUiOverlayStyle
+      //          .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
+      //    )),
+      home: const ThemeLearnView(),
     );
   }
 }
