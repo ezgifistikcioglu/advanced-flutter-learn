@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full/mid/package_learn_view.dart';
 import 'package:flutter_full/mid/theme/light_theme.dart';
 import 'package:flutter_full/mid/theme_learn_view.dart';
 
