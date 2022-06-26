@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_full/mid/animated_learn_view.dart';
+import 'package:flutter_full/mid/cache/shared_learn_cache.dart';
 import 'package:flutter_full/mid/form_learn_view.dart';
 import 'package:flutter_full/mid/image_learn_mid.dart';
 import 'package:flutter_full/mid/oop_learn_view.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
       //      systemOverlayStyle: SystemUiOverlayStyle
       //          .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
       //    )),
-      home: const FormLearnView(),
+      home: const SharedLearn(),
     );
   }
 }
