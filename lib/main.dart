@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_full/mid/animated_learn_view.dart';
 import 'package:flutter_full/mid/image_learn_mid.dart';
+import 'package:flutter_full/mid/oop_learn_view.dart';
 import 'package:flutter_full/mid/theme/light_theme.dart';
 
 void main() {
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
       //      systemOverlayStyle: SystemUiOverlayStyle
       //          .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
       //    )),
-      home: const AnimatedLearnView(),
+      home: const OOPLearnView(),
     );
   }
 }
