@@ -11,3 +11,12 @@ mixin LaunchMixin on State<PackageLearnView> {
     // if (!await launchUrl(url)) throw 'Could not launch $url';
   }
 }
+
+//mixin LaunchMixinForShared on State<UserListView> {
+//  void launchURL(Uri url) async {
+//    if (await canLaunchUrl(url)) {
+//      await launchUrl(url);
+//    }
+//    // if (!await launchUrl(url)) throw 'Could not launch $url';
+//  }
+//}

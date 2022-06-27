@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_full/mid/cache/shared_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_full/mid/cache/user_model.dart';
 
 class SharedLearn extends StatefulWidget {
   const SharedLearn({Key? key}) : super(key: key);
@@ -12,11 +12,13 @@ class SharedLearn extends StatefulWidget {
 class _SharedLearnState extends LoadingStatefull<SharedLearn> {
   int _currentValue = 0;
   late final SharedManager _sharedManager;
+  late final List<User> userItems;
 
   @override
   void initState() {
     super.initState();
     _sharedManager = SharedManager();
+    userItems = UserItems().users;
     _initialize();
   }
 
@@ -47,26 +49,32 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_currentValue.toString()),
-        actions: [
-          isLoading
-              ? Center(
-                  child: CircularProgressIndicator(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                  ),
-                )
-              : const SizedBox.shrink()
-        ],
+        actions: [_loadingIndicator(context)],
       ),
       floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
         children: [_saveValueButton(), _removeValueButton()],
       ),
-      body: TextField(
-        onChanged: (value) {
-          _onChangedValue(value);
-        },
+      body: Column(
+        children: [
+          TextField(
+            onChanged: (value) {
+              _onChangedValue(value);
+            },
+          ),
+        ],
       ),
     );
+  }
+
+  SingleChildRenderObjectWidget _loadingIndicator(BuildContext context) {
+    return isLoading
+        ? Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).scaffoldBackgroundColor,
+            ),
+          )
+        : const SizedBox.shrink();
   }
 
   FloatingActionButton _saveValueButton() {
@@ -96,6 +104,19 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
         changeLoading();
       },
     );
+  }
+}
+
+//dummy data using
+class UserItems {
+  late final List<User> users;
+
+  UserItems() {
+    users = [
+      User('flutter1', '101', 'pub.dev'),
+      User('flutter2', '102', 'pub.dev'),
+      User('flutter3', '103', 'pub.dev'),
+    ];
   }
 }
 
