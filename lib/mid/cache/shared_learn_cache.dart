@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_full/mid/cache/shared_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedLearn extends StatefulWidget {
@@ -10,17 +11,26 @@ class SharedLearn extends StatefulWidget {
 
 class _SharedLearnState extends LoadingStatefull<SharedLearn> {
   int _currentValue = 0;
+  late final SharedManager _sharedManager;
 
   @override
   void initState() {
     super.initState();
+    _sharedManager = SharedManager();
+    _initialize();
+  }
+
+  Future<void> _initialize() async {
+    changeLoading();
+    await _sharedManager.init();
+    changeLoading();
     getDefaultValues();
   }
 
   Future<void> getDefaultValues() async {
-    final prefs = await SharedPreferences.getInstance();
-    final int? counter = prefs.getInt('counter');
-    _onChangedValue(counter.toString());
+    // final prefs = await SharedPreferences.getInstance();
+    // final int? counter = prefs.getInt('counter');
+    _onChangedValue(_sharedManager.getString(SharedKeys.counter) ?? '');
   }
 
   void _onChangedValue(String value) {
@@ -65,8 +75,10 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
       onPressed: () async {
         changeLoading();
         // Obtain shared preferences.
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setInt('counter', _currentValue);
+        //final prefs = await SharedPreferences.getInstance();
+        //await prefs.setInt('counter', _currentValue);
+        await _sharedManager.saveString(
+            SharedKeys.counter, _currentValue.toString());
         changeLoading();
       },
     );
@@ -78,8 +90,9 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
       onPressed: () async {
         changeLoading();
         // Obtain shared preferences.
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.remove('counter');
+        //final prefs = await SharedPreferences.getInstance();
+        //await prefs.remove('counter');
+        await _sharedManager.removeItem(SharedKeys.counter);
         changeLoading();
       },
     );

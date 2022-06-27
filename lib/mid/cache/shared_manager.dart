@@ -7,9 +7,7 @@ enum SharedKeys { counter }
 class SharedManager {
   SharedPreferences? preferences;
 
-  SharedManager() {
-    init();
-  }
+  SharedManager();
 
   Future<void> init() async {
     preferences = await SharedPreferences.getInstance();
@@ -28,7 +26,7 @@ class SharedManager {
     await preferences?.setString(key.name, value);
   }
 
-  Future<String?> getString(SharedKeys key) async {
+  String? getString(SharedKeys key) {
     _checkPreferences();
     return preferences?.getString(key.name);
   }
