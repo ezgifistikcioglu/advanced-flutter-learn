@@ -12,8 +12,12 @@ void main() {
       GenericUser('name3', '33', 30),
     ];
 
-    final result = UserManagement().calculateMoney(users);
+    final userManagement = UserManagement(AdminUser('boss', '1', 15, 1));
 
-    expect(result, 60);
+    final result = userManagement.calculateMoney(users);
+
+    final res = userManagement.showNames<String>(users);
+
+    expect(result, 75);
   });
 }
