@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full/basic/alert_learn.dart';
-import 'package:flutter_full/basic/sheet_learn.dart';
-import 'package:flutter_full/mid/cache/secure_context/secure_context_learn.dart';
-import 'package:flutter_full/mid/cache/shared_list_cache.dart';
+import 'package:flutter_full/advance_mid/callback_learn.dart';
 import 'package:flutter_full/mid/theme/light_theme.dart';
 
 void main() {
@@ -48,7 +45,7 @@ class MyApp extends StatelessWidget {
       //      systemOverlayStyle: SystemUiOverlayStyle
       //          .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
       //    )),
-      home: const AlertLearn(),
+      home: const CallBackLearn(),
     );
   }
 }
