@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full/advance_mid/callback_learn.dart';
-import 'package:flutter_full/advance_mid/tabbar_advance.dart';
 import 'package:flutter_full/mid/theme/light_theme.dart';
+
+import 'advance_mid/reqrest_resource/view/reqrest_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       //      systemOverlayStyle: SystemUiOverlayStyle
       //          .light, // Android cihazın şarz ve saat bilgilerinin old kısım, önemli
       //    )),
-      home: const TabbarAdvanceLearn(),
+      home: const ReqrestView(),
     );
   }
 }

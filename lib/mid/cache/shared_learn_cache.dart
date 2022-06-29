@@ -120,7 +120,7 @@ class UserItems {
   }
 }
 
-// Generic
+// Generic - BaseView Kullanımı
 abstract class LoadingStatefull<T extends StatefulWidget> extends State<T> {
   bool isLoading = false;
 

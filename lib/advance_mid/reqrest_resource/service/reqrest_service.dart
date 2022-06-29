@@ -7,7 +7,7 @@ abstract class IReqrestService {
   IReqrestService(this.dio);
   final Dio dio;
 
-  Future<List<ResourceModel>?> fetchResourceItem();
+  Future<ResourceModel?> fetchResourceItem();
 }
 
 enum _ReqrestPaths { resource }
@@ -16,12 +16,12 @@ class ReqrestService extends IReqrestService {
   ReqrestService(Dio dio) : super(dio);
 
   @override
-  Future<List<ResourceModel>?> fetchResourceItem() async {
+  Future<ResourceModel?> fetchResourceItem() async {
     final response = await dio.get('/${_ReqrestPaths.resource.name}');
     if (response.statusCode == HttpStatus.ok) {
       final jsonBody = response.data;
-      if (jsonBody is List) {
-        return jsonBody.map((json) => ResourceModel.fromJson(json)).toList();
+      if (jsonBody is Map<String, dynamic>) {
+        return ResourceModel.fromJson(jsonBody);
       }
     }
     return null;
