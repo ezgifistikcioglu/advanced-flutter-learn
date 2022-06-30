@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_full/mid/theme/light_theme.dart';
+import 'package:flutter_full/product/global/resource_context.dart';
+import 'package:flutter_full/product/global/theme_notifier.dart';
+import 'package:provider/provider.dart';
 
 import 'advance_mid/reqrest_resource/view/reqrest_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      Provider(create: (_) => ResourceContext()),
+      ChangeNotifierProvider<ThemeNotifier>(
+          create: (context) => ThemeNotifier())
+    ],
+    builder: (context, child) => const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: LightTheme().theme,
+      theme: context.watch<ThemeNotifier>().currentTheme,
       //ThemeData.dark().copyWith(
       //    bottomAppBarTheme:
       //        const BottomAppBarTheme(shape: CircularNotchedRectangle()),
