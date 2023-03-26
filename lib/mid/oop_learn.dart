@@ -11,14 +11,14 @@ abstract class IFileDownload {
   }
 }
 
-///  with ShareMixin alamayız çünkü ben IFileDownload'ın birebir aynısını implement ettim zaten diyor bize.
+///  with ShareMixin alamayız çünkü ben IFileDownload'ın birebir aynısını implement ettim zaten üzerine bişey yazamazsın diyor bize.
 class FileDownload implements IFileDownload {
   @override
   bool? downloadItem(FileItem? fileItem) {
     if (fileItem == null) {
       throw FileDownloadException();
     }
-    print('file item is not null');
+    //print('file item is not null');
     return true;
   }
 
@@ -32,7 +32,7 @@ class FileDownload2 extends IFileDownload with ShareMixin {
     if (fileItem == null) {
       throw FileDownloadException();
     }
-    print('file item is not null');
+    //print('file item is not null');
     return true;
   }
 
@@ -52,7 +52,7 @@ class SmsDownload implements IFileDownload {
     if (fileItem == null) {
       throw FileDownloadException();
     }
-    print('file item is not null');
+    //print('file item is not null');
     return true;
   }
 

@@ -18,8 +18,8 @@ class _StateManageLearnViewState extends StateLearnViewModel {
         },
       ),
       appBar: AppBar(
-        backgroundColor: isOpacity ? Colors.red : Colors.green,
-        shadowColor: isVisible ? Colors.amber : Colors.purple,
+        backgroundColor: isOpacity ? Colors.red : Colors.yellowAccent,
+        shadowColor: isVisible ? Colors.red : Colors.cyan,
       ),
     );
   }
