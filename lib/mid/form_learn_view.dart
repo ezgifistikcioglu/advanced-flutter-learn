@@ -8,7 +8,7 @@ class FormLearnView extends StatefulWidget {
 }
 
 class _FormLearnViewState extends State<FormLearnView> {
-  GlobalKey<FormState> _key = GlobalKey();
+  final GlobalKey<FormState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,17 +16,13 @@ class _FormLearnViewState extends State<FormLearnView> {
       body: Form(
         key: _key,
         autovalidateMode: AutovalidateMode.always,
-        onChanged: () {},
+        onChanged: () {
+          print('touch');
+        },
         child: Column(
           children: [
-            TextFormField(validator: FormFieldValidator().isNotEmpty),
-            TextFormField(validator: FormFieldValidator().isNotEmpty
-                //  ((value) {
-                //   return (value?.isNotEmpty ?? false)
-                //       ? null
-                //       : 'This field cannot be left blank';
-                // }),
-                ),
+            textFormFieldValidator(),
+            textFormFieldValidator(),
             DropdownButtonFormField<String>(
                 validator: FormFieldValidator().isNotEmpty,
                 items: const [
@@ -47,9 +43,17 @@ class _FormLearnViewState extends State<FormLearnView> {
       ),
     );
   }
+
+  TextFormField textFormFieldValidator() =>
+      TextFormField(validator: FormFieldValidator().isNotEmpty);
 }
 
 class FormFieldValidator {
+  //  ((value) {
+  //   return (value?.isNotEmpty ?? false)
+  //       ? null
+  //       : 'This field cannot be left blank';
+  // }),
   String? isNotEmpty(String? data) {
     return (data?.isNotEmpty ?? false) ? null : ValidatorMessage._notEmpty;
   }
