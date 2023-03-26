@@ -3,7 +3,9 @@ import 'package:flutter_full/mid/state_manage/state_manage_learn_view.dart';
 
 abstract class StateLearnViewModel extends State<StateManageLearnView> {
   @override
-  void initState() {}
+  void initState() {
+    super.initState();
+  }
 
   bool isVisible = false;
   bool isOpacity = false;
