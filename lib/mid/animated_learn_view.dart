@@ -13,13 +13,15 @@ class _AnimatedLearnViewState extends State<AnimatedLearnView>
     with TickerProviderStateMixin {
   @override
   void initState() {
-    controller =
+    super.initState();
+    animationController =
         AnimationController(vsync: this, duration: _DurationItems._durationLow);
   }
 
   bool _isVisible = false;
   bool _isOpacity = false;
-  late AnimationController controller;
+
+  late AnimationController animationController;
 
   void _changeVisible() {
     setState(() {
@@ -38,13 +40,14 @@ class _AnimatedLearnViewState extends State<AnimatedLearnView>
   /// * _isVisible ? Placeholder() : null
   /// Not: AnimatedCrossFade : 2 tane view arasında değişiklik yapmayı sağlar
   /// * _placeHolderWithAnimatedCrossFade()
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: _placeHolderWithAnimatedCrossFade()),
         floatingActionButton: FloatingActionButton(onPressed: (() {
           _changeVisible();
-          controller.animateTo(_isVisible ? 1 : 0);
+          animationController.animateTo(_isVisible ? 1 : 0);
         })),
         body: Column(
           children: [
@@ -57,7 +60,9 @@ class _AnimatedLearnViewState extends State<AnimatedLearnView>
                   onPressed: () {
                     _changeOpacity();
                   },
-                  icon: const Icon(Icons.precision_manufacturing_rounded)),
+                  icon: Icon(_isOpacity
+                      ? Icons.visibility_outlined
+                      : Icons.visibility_off_rounded)),
             ),
             AnimatedDefaultTextStyle(
                 child: const Text('data'),
@@ -66,7 +71,10 @@ class _AnimatedLearnViewState extends State<AnimatedLearnView>
                         : context.textTheme().subtitle1) ??
                     const TextStyle(),
                 duration: _DurationItems._durationLow),
-            AnimatedIcon(icon: AnimatedIcons.menu_close, progress: controller),
+            AnimatedIcon(
+              icon: AnimatedIcons.list_view,
+              progress: animationController,
+            ),
             AnimatedContainer(
                 duration: _DurationItems._durationLow,
                 color: Colors.purple,
